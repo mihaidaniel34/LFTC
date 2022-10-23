@@ -1,0 +1,19 @@
+program = {cmpdstmt}
+cmpdstmt = stmt | (stmt (newline | ";") cmpdstmt)
+stmt = (declarationStatement | assignmentStatement | ifStatement | whileStatement | returnStatement | ioStatement | forStatement)
+declarationStatement = "var" type declarationList
+declarationList = identifier ["=" expression] {"," declarationList}
+type = primitive | listType
+listType = list primitive
+primitive = "int" | "string" | "float" | "boolean"
+
+assignmentStatement = identifier "=" expression
+expression =  ["("] (numericConstant | identifier | expression) [(("+" | "-" | "*" | "/") expression)] [")"]
+condition = expression | (expression ("<" | "<=" | "=" | "<>" | ">=" | ">" ) expression) | (condition ("&&" | "||") condition)
+ifStatement = "(" condition ")" "=>" "{" {cmpdstmt} "}" ["else" "{" cmpdstmt "}"]
+whileStatement = "while" "(" condition ")" "=>" "{" cmpdstmt "}"
+returnStatement = "return" expression
+ioStatement = ("print" expression) | ("input" identifier)
+forStatement = "for" "(" "var" primitive identifier "=" expression "," co   ndition ")" "=>" "{" cmpdstmt "}"
+callStatement = functionName "(" (expression {"," expression}) ")"
+functionName = "print" | "input" | "add"
