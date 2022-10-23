@@ -8,7 +8,7 @@ Lexic
 
 operators: + - * / =  == <= >= < > && || % 
 separators: () {} [] : ; space newline , => "
-reserved words: var const print input else while for list add
+reserved words: var const print input else while for list add int string bool true false
 
 identifier = letter{(letter | digit)}
 letter = "A" | "B" | ... | "Z" | "a" | "b" ... | "z"
