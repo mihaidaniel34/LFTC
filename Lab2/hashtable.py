@@ -2,12 +2,6 @@ class HashTable:
     def __init__(self, size=10):
         self.list = [[] for _ in range(size)]
 
-    def size(self):
-        return len(self.list)
-
-    def __len__(self):
-        return len(self.list)
-
     def add(self, item):
         index = self._index(item)
         bucket = self.list[index]
@@ -19,6 +13,8 @@ class HashTable:
         bucket = self.list[self._index(item)]
         if item in bucket:
             bucket.remove(item)
+            return True
+        return False
 
     @staticmethod
     def _hash(key):
@@ -45,3 +41,9 @@ class HashTable:
 
     def get_item(self, bucket, index):
         return self.list[bucket][index]
+
+    def size(self):
+        return len(self.list)
+
+    def __len__(self):
+        return len(self.list)
