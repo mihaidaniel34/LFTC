@@ -34,6 +34,9 @@ class Scanner:
                         const = match.group()
                         if not const.startswith('\"'):
                             const = int(const)
+                            if idx + len(repr(const)) < len(line):
+                                if line[idx + len(repr(const))].isalpha():
+                                    raise RuntimeError(f"LEXICAL ERROR AT LINE {line_number+1}")
                         pif.add("constant", constants.add(const))
                         idx += len(repr(const))
                     else:

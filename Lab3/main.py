@@ -7,9 +7,11 @@ if __name__ == "__main__":
     constants = hashtable.HashTable()
     pif = Pif()
     scanner = Scanner()
-    with open("p2.txt") as f:
+    with open("p3.txt") as f:
         for line_number, line in enumerate(f):
             scanner.scan(line, identifiers, constants, pif, line_number)
+
+    print("Lexically correct!")
 
     with open("pif.out", "w") as piff:
         piff.write(repr(pif))
