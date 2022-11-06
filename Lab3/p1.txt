@@ -1,0 +1,22 @@
+var int a, b, c
+input(a)
+input(b)
+input(c)
+
+(a >= b) => {
+	(a >= c) => {
+		print(a)
+	}
+	else => {
+	    print(c)
+	    g="asdads"
+        f=15
+	}
+} else {
+	(b >= c) => {
+		print(b)
+	}	
+	else => {
+		print(c)	
+	}
+}
