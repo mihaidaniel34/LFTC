@@ -16,3 +16,6 @@ Input: element to be added, position tuple
 
 The scanner looks into the program line by line and by splitting the line into substrings, it verifies if it contains a token by verifying each token in a list of tokens,
 an identifier using a regular expression `[a-zA-Z]([a-zA-Z]|\d)*`(identifiers cannot start with a number)  or a constant using `(0|[+-]?[1-9]\d*)|\".*\"` (number or string constant held within quotation marks)
+
+
+![](Diagrama.drawio.png)
