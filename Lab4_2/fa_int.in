@@ -1,0 +1,45 @@
+p, u, sy, s, z
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, +, -
+p
+u, s, z
+p, 0 = z
+p, 1 = u
+p, 2 = u
+p, 3 = u
+p, 4 = u
+p, 5 = u
+p, 6 = u
+p, 7 = u
+p, 8 = u
+p, 9 = u
+u, 0 = u
+u, 1 = u
+u, 2 = u
+u, 3 = u
+u, 4 = u
+u, 5 = u
+u, 6 = u
+u, 7 = u
+u, 8 = u
+u, 9 = u
+p, + = sy
+p, - = sy
+sy, 1 = s
+sy, 2 = s
+sy, 3 = s
+sy, 4 = s
+sy, 5 = s
+sy, 6 = s
+sy, 7 = s
+sy, 8 = s
+sy, 9 = s
+s, 0 = s
+s, 1 = s
+s, 2 = s
+s, 3 = s
+s, 4 = s
+s, 5 = s
+s, 6 = s
+s, 7 = s
+s, 8 = s
+s, 9 = s
