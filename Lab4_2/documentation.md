@@ -1,5 +1,5 @@
 
-
+https://github.com/mihaidaniel34/LFTC/tree/main/Lab4 and https://github.com/mihaidaniel34/LFTC/tree/main/Lab4_2
 
 FA represents a finite automata which reads from an input file the set of states, the alphabet, the input state, the output states and the transitions.
 The data structure is made up of a list of states, an alphabet list, the input state as string, a list of output states and a map with tuples as keys for the transitions.
@@ -28,3 +28,5 @@ transition = state "," char "=" state
 transitions = transition {"\n" transition}
 
 inputFile = states "\n" alphabet "\n" state "\n" states "\n" transitions
+
+![](FA.drawio.png)
