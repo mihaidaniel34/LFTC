@@ -1,5 +1,7 @@
 # lr(0)
+from LR import LR
 from grammar import Grammar
+from item import Item
 
 
 def menu(gr):
@@ -36,3 +38,7 @@ if __name__ == "__main__":
     print_menu()
     menu(grammar)
     print(grammar.cfg_check())
+
+    lr = LR(grammar)
+    start_item = Item(grammar.starting_nt, grammar.get_prod(grammar.starting_nt), 0)
+    print(lr.closure(start_item))
