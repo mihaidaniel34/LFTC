@@ -25,3 +25,13 @@ class LR:
                         changed = True
                 idx += 1
         return cls
+
+    def gotTo(self, state, element):
+        result = []
+        for item in state.items:
+            nonTerminal = item.rhs[item.dot_idx]
+            if nonTerminal == element:
+                nextItem = Item(item.lhs, item.rhs, item.dot_idx + 1)
+                result.append(nextItem)
+
+        return result
