@@ -1,9 +1,11 @@
 from item import Item
+from state import State
 
 
 class LR:
     def __init__(self, grammar):
         self.grammar = grammar
+        self.can_col = self.canonical_collection()
         grammar.augment()
 
     def closure(self, item):
@@ -27,11 +29,11 @@ class LR:
                         cls.append(new_item)
                         changed = True
                 idx += 1
-        return cls
+        return State(item, cls, self.grammar.enriched_sym)
 
     def goto(self, state, element):
         result = []
-        for item in state:
+        for item in state.closure:
             non_terminal = item.rhs[item.dot_idx]
             if non_terminal == element:
                 next_item = Item(item.lhs, item.rhs, item.dot_idx + 1)
@@ -43,12 +45,10 @@ class LR:
         return item.rhs[item.dot_idx] if item.dot_idx < len(item.rhs) else None
 
     def dot_preceded_nt(self, items):
-        return [self.get_after_dot(item) for item in items if self.get_after_dot(item) is not None]
+        return [self.get_after_dot(item) for item in items.closure if self.get_after_dot(item) is not None]
 
     def canonical_collection(self):
-        can_col = []
-        can_col.append(
-            self.closure(Item(self.grammar.starting_nt, self.grammar.get_prod(self.grammar.starting_nt)[0], 0)))
+        can_col = [self.closure(Item(self.grammar.starting_nt, self.grammar.get_prod(self.grammar.starting_nt)[0], 0))]
         idx = 0
         changed = True
         while changed:
@@ -56,8 +56,11 @@ class LR:
             while idx < len(can_col):
                 for sym in self.dot_preceded_nt(can_col[idx]):
                     goto_res = self.goto(can_col[idx], sym)[0]
-                    if len(goto_res) > 0 and goto_res not in can_col:
+                    if len(goto_res.closure) > 0 and goto_res not in can_col:
                         changed = True
                         can_col.append(goto_res)
                 idx += 1
         return can_col
+
+    def create_parsing_table(self):
+        for state in self.can_col:

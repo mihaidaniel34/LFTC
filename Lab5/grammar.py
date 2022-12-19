@@ -4,18 +4,18 @@ class Grammar:
         self.non_terminals = []
         self.terminals = []
         self.productions = {}
+        self.enriched_sym = "S0"
         self.read_file(filename)
 
     def get_prod(self, nt):
         return self.productions[(nt,)]
 
     def augment(self):
-        starting_symbol = "S0"
-        if starting_symbol in self.non_terminals:
+        if self.enriched_sym  in self.non_terminals:
             return
-        self.non_terminals.append(starting_symbol)
-        self.productions[(starting_symbol,)] = [self.starting_nt]
-        self.starting_nt = starting_symbol
+        self.non_terminals.append(self.enriched_sym )
+        self.productions[(self.enriched_sym ,)] = [self.starting_nt]
+        self.starting_nt = self.enriched_sym
 
     def read_file(self, filename):
         with open(filename) as f:
