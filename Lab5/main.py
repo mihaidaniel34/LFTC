@@ -34,9 +34,12 @@ def print_menu():
 
 if __name__ == "__main__":
     grammar = Grammar("g1.txt")
-    print_menu()
-    menu(grammar)
-    print(grammar.cfg_check())
+    # print_menu()
+    # menu(grammar)
+    # print(grammar.cfg_check())
 
     lr = LR(grammar)
-    print(lr.canonical_collection())
+    for state in lr.can_col:
+        print(state)
+    lr.create_parsing_table()
+    print(lr.parsing_table)

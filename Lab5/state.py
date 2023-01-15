@@ -1,3 +1,4 @@
+import itertools
 from enum import Enum
 
 
@@ -10,8 +11,12 @@ class ACTION(Enum):
 
 
 class State:
+
+    id = itertools.count()
+
     def __init__(self, items, closure, enriched_symbol):
         self.action = None
+        self.id = next(self.id)
         self.items = items
         self.closure = closure
         self.set_action(enriched_symbol)
@@ -41,6 +46,9 @@ class State:
             if len(item.rhs) <= item.dot_idx:
                 return False
         return True
+
+    def get_all_after_dot(self):
+        return [item.rhs[item.dot_idx] for item in self.closure if item.dot_idx < len(item.rhs)]
 
     def __eq__(self, other):
         if isinstance(other, State):
