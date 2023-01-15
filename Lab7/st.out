@@ -1,0 +1,19 @@
+IDENTIFIERS
+B	I	Item
+1	0	'numbe2'
+2	0	'sum'
+3	0	'numbe4'
+3	1	'i'
+5	0	'number'
+6	0	'l'
+7	0	'inp'
+7	1	'numbe3'
+8	0	'n'
+
+CONSTANTS
+B	I	Item
+0	0	'+13'
+2	0	'-13'
+2	1	'15'
+6	0	'0'
+6	1	'+15'
