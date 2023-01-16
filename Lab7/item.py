@@ -11,4 +11,5 @@ class Item:
         return False
 
     def __repr__(self):
-        return f"{self.lhs} -> {''.join(''.join(self.rhs)[:self.dot_idx])}.{''.join(''.join(self.rhs)[self.dot_idx:])}"
+        # return f"{self.lhs} -> {''.join(''.join(self.rhs)[:self.dot_idx])}.{''.join(''.join(self.rhs)[self.dot_idx:])}"
+        return str(self.lhs) + " -> " + " ".join(self.rhs[:self.dot_idx]) + "." + " ".join(self.rhs[self.dot_idx:])

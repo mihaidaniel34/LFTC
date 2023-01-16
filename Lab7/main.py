@@ -39,15 +39,20 @@ if __name__ == "__main__":
     # menu(grammar)
     # print(grammar.cfg_check())
 
+    print(grammar.productions)
     lr = LR(grammar)
     for state in lr.can_col:
         print(state)
     lr.create_parsing_table()
     print(lr.parsing_table)
-    output = lr.parse(['a', 'b'])
-    print(output)
+    with open("seq.txt") as s:
+        sequence = s.readline().split()
+        output = lr.parse(sequence)
+        print(output)
 
-    parser_out = ParserOutput(output, grammar)
-    parser_out.compute_tree()
-    for node in parser_out.parsing_tree:
-        print(node)
+        parser_out = ParserOutput(output, grammar)
+        parser_out.compute_tree()
+        for node in parser_out.parsing_tree:
+            print(node)
+
+        parser_out.write("out1.txt")

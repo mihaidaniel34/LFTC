@@ -1,0 +1,42 @@
+P D L T Z I R O F C S W Q A U E N X M K
+id if list array char string int const var bool true false Verify else Read Show for while rad + ++ - * / % = == < <= > >= != && || += -= ( ) { } [ ] ; space : => ' , $
+P
+P -> $ D $
+D -> L
+D -> L ; D
+L -> var id : Z
+T -> Z
+T -> R
+T -> I
+Z -> bool
+Z -> char
+Z -> int
+R -> var id : array["nr"] : Z
+I -> var id : list["nr"]: Z
+O -> Read id
+O -> Show id
+F -> if C => S else => S
+W -> while C => S
+Q ->  for A ; id U id; id  E => S
+A -> id = E
+S -> N
+S -> X
+N -> A
+N -> O
+E -> E + M
+E -> E - M
+E -> M
+M -> M * K
+M -> K
+K -> E
+K -> E id
+X -> Q
+X -> F
+X -> W
+C -> E U E
+U -> <
+U -> <=
+U -> ==
+U -> >
+U -> >=
+U -> !=

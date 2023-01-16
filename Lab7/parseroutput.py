@@ -37,5 +37,5 @@ class ParserOutput:
     def write(self, filename):
         f = open(filename, "w")
         for item in self.parsing_tree:
-            f.write(item + "\n")
+            f.write(str(item) + "\n")
         f.close()
