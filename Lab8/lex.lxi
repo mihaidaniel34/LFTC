@@ -1,0 +1,49 @@
+%{
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <string.h>
+
+    int no_lines = 0;
+%}
+
+%option caseless
+%option noyywrap
+
+NON_ZERO_DIGIT [1-9]
+DIGIT [0-9]
+INTEGER [+-]?{NON_ZERO_DIGIT}{DIGIT}*|0
+LETTER [a-zA-Z]
+STRING \"({LETTER}|{DIGIT})*\"
+IDENTIFIER {LETTER}({LETTER}|{DIGIT})*
+BAD_IDENTIFIER ({DIGIT})+({LETTER})+({LETTER}|{DIGIT})*
+
+%%
+
+"var"|"const"|"print"|"input"|"else"|"while"|"for"|"list"|"add"|"int"|"string"|"bool"|"true"|"false" {printf("Reserved word %s\n", yytext);}
+
+"+"|"-"|"*"|"/"|"%"|"=="|"!="|"="|"<="|">="|"<"|">"|"&&"|"||" {printf("Operator %s\n", yytext);}
+
+{IDENTIFIER} {printf("Identifier %s\n", yytext);}
+
+{BAD_IDENTIFIER} {printf("Bad identifier %s at line %d\n", yytext, no_lines); exit(1);}
+
+{INTEGER} {printf("Integer %s\n", yytext);}
+
+{STRING} {printf("String %s\n",yytext);}
+
+"("|")"|"{"|"}"|"["|"]"|":"|";"|","|"=>" {printf("Separator %s\n", yytext);}
+
+[ \t]+ {}
+[\n]+ {++no_lines;}
+
+. {printf("Error at token %s at line %d\n", yytext, no_lines); exit(1);}
+
+%%
+
+int main(int argc, char** argv) {
+    if (argc > 1) 
+        yyin = fopen(argv[1], "r");
+    else 
+        yyin = stdin;
+    yylex();
+}
